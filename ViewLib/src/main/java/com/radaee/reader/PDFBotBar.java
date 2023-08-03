@@ -12,7 +12,7 @@ public class PDFBotBar
 {
 	private RelativeLayout m_parent = null;
 	private View m_view = null;
-	PDFBotBar(RelativeLayout parent, int resource)
+	public PDFBotBar(RelativeLayout parent, int resource)
 	{
 		Context context = parent.getContext();
 		m_view = LayoutInflater.from(context).inflate(resource, null);
