@@ -42,6 +42,7 @@
         android:layout_toLeftOf="@+id/btn_left"
         android:layout_toRightOf="@+id/btn_back"
         android:inputType="text"
+        android:textColor="#FFFFFF"
         android:maxLines="1"
         android:imeOptions="actionSearch"/>
 

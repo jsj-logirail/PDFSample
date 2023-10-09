@@ -247,7 +247,7 @@ public class Global
 	public static int gridview_icon_color = 0xFFFF9040;
 	public static int toolbar_icon_color = 0xFFFF9040;
 	public static int toolbar_bg_color = 0xFF202020;
-
+	public static boolean useSelIcons = true;
 	public static boolean g_hand_signature = true;
 	public static boolean g_fake_sign = true;		// if true, the signature doesn't require the p12/pfx certificate file. Only the image is set to the form field.
 														// signature without certificate are out of standard and some PDF Reader shall refuse to show the bitmap.

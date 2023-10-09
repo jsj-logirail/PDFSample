@@ -72,12 +72,12 @@ public class Page
 		 * @param rect [left, top, right, bottom] in PDF coordinate in dst_page.
 		 * @return true or false.
 		 */
-        final public boolean MoveToPage( Page dst_page, float[] rect )
+        /*final public boolean MoveToPage( Page dst_page, float[] rect )
 		{
 			boolean ret = Page.moveAnnot(page.hand, dst_page.hand, hand, rect);
             page = dst_page;
             return ret;
-		}
+		}*/
 		/**
 		 * render an annotation to Bitmap. this method fully scale annotation to bitmap object.<br/>
 		 * this method require professional or premium license.<br/>
@@ -2005,7 +2005,9 @@ public class Page
 	 * a standard license is required for this method
 	 * @return count or 0 if ObjsStart not invoked.
 	 */
-    final public int ObjsGetCharCount()
+    final public int ObjsGetCharCount(
+
+	)
 	{
 		return objsGetCharCount( hand );
 	}

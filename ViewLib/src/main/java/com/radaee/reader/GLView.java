@@ -57,9 +57,9 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 public class GLView extends GLSurfaceView implements GLCanvas.CanvasListener {
-    static final protected int STA_NONE = 0;
-    static final protected int STA_ZOOM = 1;
-    static final protected int STA_SELECT = 2;
+    static final public int STA_NONE = 0;
+    static final public int STA_ZOOM = 1;
+    static final public int STA_SELECT = 2;
     static final protected int STA_INK = 3;
     static final protected int STA_RECT = 4;
     static final protected int STA_ELLIPSE = 5;
@@ -1477,7 +1477,7 @@ public class GLView extends GLSurfaceView implements GLCanvas.CanvasListener {
                             //add to redo/undo stack.
                             float[] rect = m_annot.GetRect();
                             m_opstack.push(new OPMove(m_annot_page.GetPageNo(), rect, pos.pageno, page.GetAnnotCount(), m_annot_rect0));
-                            m_annot.MoveToPage(page, m_annot_rect0);
+                           // m_annot.MoveToPage(page, m_annot_rect0);
                             m_annot.SetModifyDate(CommonUtil.getCurrentDate());
                             //page.CopyAnnot(m_annot, m_annot_rect0);
                             page.Close();
@@ -2195,7 +2195,7 @@ public class GLView extends GLSurfaceView implements GLCanvas.CanvasListener {
         }
     }
 
-    public void PDFSetSelect() {
+    public int PDFSetSelect() {
         if (m_status == STA_SELECT) {
             m_sel_icon1.recycle();
             m_sel_icon2.recycle();
@@ -2203,13 +2203,15 @@ public class GLView extends GLSurfaceView implements GLCanvas.CanvasListener {
             m_sel_icon2 = null;
             m_annot_page = null;
             m_status = STA_NONE;
+            if (m_canvas != null) m_canvas.invalidate();
         } else {
             m_sel_icon1 = BitmapFactory.decodeResource(this.getResources(), R.drawable.pt_start);
             m_sel_icon2 = BitmapFactory.decodeResource(this.getResources(), R.drawable.pt_end);
             m_annot_page = null;
             m_status = STA_SELECT;
+            if (m_canvas != null) m_canvas.invalidate();
         }
-        if (m_canvas != null) m_canvas.invalidate();
+        return m_status;
     }
 
     public void PDFSetNote(int code) {
@@ -2833,6 +2835,13 @@ public class GLView extends GLSurfaceView implements GLCanvas.CanvasListener {
             GLPage page = m_layout.vGetPage(pageno);
             if (page != null) m_layout.gl_render(page);
             requestRender();
+        }
+    }
+
+    public void PDFUpdateCurrPage() {
+        if (m_layout != null) {
+            GLPage page = m_layout.vGetPage(m_cur_pageno);
+            if (page != null) m_layout.gl_render(page);
         }
     }
 

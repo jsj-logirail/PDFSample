@@ -115,7 +115,7 @@ class OPMove extends OPItem
             page1.ObjsStart();
             page0.ObjsStart();
             Page.Annotation annot = page1.GetAnnot(m_idx);
-            annot.MoveToPage(page0, m_rect0);
+           // annot.MoveToPage(page0, m_rect0);
             m_idx = page1.GetAnnotCount();
             page0.Close();
             page1.Close();
@@ -141,7 +141,7 @@ class OPMove extends OPItem
             page1.ObjsStart();
             page0.ObjsStart();
             Page.Annotation annot = page0.GetAnnot(page0.GetAnnotCount() - 1);
-            annot.MoveToPage(page1, m_rect1);
+          //  annot.MoveToPage(page1, m_rect1);
             page0.Close();
             page1.Close();
         }

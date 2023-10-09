@@ -50,17 +50,18 @@ public class UIAnnotMenu {
         RelativeLayout.LayoutParams paras = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
                 m_view.getContext().getResources().getDimensionPixelOffset(R.dimen.annot_menu_btn_size));
         m_view.setLayoutParams(paras);
+        ///I:: DESACTIVADO
 
-        ImageButton btn = m_view.findViewById(R.id.btn_annot_edit);
-        btn.setOnClickListener(new View.OnClickListener() {
+       // ImageButton btn = m_view.findViewById(R.id.btn_annot_edit);
+       /* btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new UIAnnotDlgPopup(m_view.getContext()).show(m_annot, m_callback);
                 hide();
             }
         });
-        btn = m_view.findViewById(R.id.btn_annot_property);
-        btn.setOnClickListener(new View.OnClickListener() {
+          btn = m_view.findViewById(R.id.btn_annot_property);
+      btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (m_annot.GetType()) {
@@ -94,8 +95,8 @@ public class UIAnnotMenu {
                 }
                 hide();
             }
-        });
-        btn = m_view.findViewById(R.id.btn_annot_remove);
+        });*/
+        ImageButton btn = m_view.findViewById(R.id.btn_annot_remove);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,8 +135,9 @@ public class UIAnnotMenu {
         } else m_view.findViewById(R.id.btn_annot_perform).setVisibility(View.GONE);
 
         if (m_has_edit) {
+            ///I:: DESACTIVADO
             btnsCount++;
-            m_view.findViewById(R.id.btn_annot_edit).setVisibility(View.VISIBLE);
+            m_view.findViewById(R.id.btn_annot_edit).setVisibility(View.GONE);
         } else m_view.findViewById(R.id.btn_annot_edit).setVisibility(View.GONE);
 
         if (m_has_remove) {
@@ -145,7 +147,8 @@ public class UIAnnotMenu {
 
         if (m_has_property) {
             btnsCount++;
-            m_view.findViewById(R.id.btn_annot_property).setVisibility(View.VISIBLE);
+            ///I:: DESACTIVADO
+            m_view.findViewById(R.id.btn_annot_property).setVisibility(View.GONE);
         } else m_view.findViewById(R.id.btn_annot_property).setVisibility(View.GONE);
 
         if (is_show) {

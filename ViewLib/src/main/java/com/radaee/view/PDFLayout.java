@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.util.Log;
 import android.widget.Scroller;
 
 import com.radaee.pdf.BMP;
@@ -17,7 +18,7 @@ import com.radaee.pdf.VNCache;
 
 @SuppressWarnings("WeakerAccess")
 abstract public class PDFLayout {
-    public static class PDFPos {
+    public class PDFPos {
         public float x = 0;
         public float y = 0;
         public int pageno = 0;
@@ -375,6 +376,7 @@ abstract public class PDFLayout {
     public void vSetPos(int vx, int vy, PDFPos pos) {
         if (pos == null) return;
         VPage vpage = m_pages[pos.pageno];
+        if (vpage == null) return;
         vSetX(vpage.GetVX(pos.x) - vx);
         vSetY(vpage.GetVY(pos.y) - vy);
         m_scroller.computeScrollOffset();

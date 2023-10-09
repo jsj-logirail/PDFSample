@@ -906,7 +906,7 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
         }
     }
 
-    void savePDF() {
+   public void savePDF() {
         if (m_view.PDFSave()) {
             sFileState = MODIFIED_AND_SAVED;
             Toast.makeText(m_parent.getContext(), R.string.saved_message, Toast.LENGTH_SHORT).show();
@@ -1217,7 +1217,8 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
                     for (int i = 0; i < pagesArray.length(); i++) {
                         CommonUtil.parsePageJsonFormFields(pagesArray.getJSONObject(i), m_view.PDFGetDoc());
                     }
-                    m_view.PDFUpdatePage(m_cur_page);
+                    ///I: Commit 6
+                    m_view.PDFUpdateCurrPage();
                     return "property set successfully";
                 } else return "\"Pages\" attribute is missing";
             } catch (Exception e) {
@@ -1263,7 +1264,7 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
             if (ppage != null) {
                 boolean res = ppage.FlatAnnots();
                 if (res && page == m_cur_page) {
-                    m_view.PDFUpdatePage(m_cur_page);
+                    m_view.PDFUpdateCurrPage();
                     return true;
                 }
             }
@@ -1357,7 +1358,7 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
             annotation.SetPopupText(text);
             annotation.SetPopupSubject(subject);
             page.Close();
-            m_view.PDFUpdatePage(pageno);
+            m_view.PDFUpdateCurrPage();
         }
         @Override
         public void onAddMarkupAnnotation(int pageno, int type, int index1, int index2) {
@@ -1365,7 +1366,7 @@ public class PDFViewController implements OnClickListener, SeekBar.OnSeekBarChan
             page.ObjsStart();
             boolean success = page.AddAnnotMarkup(index1, index2, type);
             page.Close();
-            if(success) m_view.PDFUpdatePage(pageno);
+            if(success) m_view.PDFUpdateCurrPage();
         }
         @Override
         public String onGetPDFCoordinates(int x, int y) {

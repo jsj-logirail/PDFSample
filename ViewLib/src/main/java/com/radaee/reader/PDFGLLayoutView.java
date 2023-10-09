@@ -71,8 +71,8 @@ public class PDFGLLayoutView extends RelativeLayout implements ILayoutView {
         m_view.PDFSetEllipse(code);
     }
 
-    public void PDFSetSelect() {
-        m_view.PDFSetSelect();
+    public int PDFSetSelect() {
+        return m_view.PDFSetSelect();
     }
 
     public void PDFSetNote(int code) {
@@ -172,6 +172,25 @@ public class PDFGLLayoutView extends RelativeLayout implements ILayoutView {
     public void PDFUpdatePage(int pageno)
     {
         m_view.PDFUpdatePage(pageno);
+    }
+
+    @Override
+    public void PDFUpdateCurrPage()
+    {
+        m_view.PDFUpdateCurrPage();
+    }
+
+
+
+    ///I:: DUDA NO USAR
+    @Override
+    public int PDFGetCurrPage() {
+        return 0;
+    }
+
+    @Override
+    public void PDFAddAnnotRect(float x, float y, float width, float height, int p) {
+
     }
 
     public void PDFSetBGColor(int color) {

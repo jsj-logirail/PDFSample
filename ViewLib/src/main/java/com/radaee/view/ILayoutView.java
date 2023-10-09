@@ -32,6 +32,8 @@ public interface ILayoutView {
         /**
          * call when blank tapped on page, this mean not annotation tapped.
          */
+
+        ///I: COMPROBAR QUE SE USE
         void OnPDFBlankTapped(int pagebo);
 
         /**
@@ -148,7 +150,7 @@ public interface ILayoutView {
      * if current status is select status, set status to none.<br/>
      * if current status is none status, set status to select.
      */
-    void PDFSetSelect();
+    int PDFSetSelect();
 
     /**
      * set Note status.
@@ -205,7 +207,11 @@ public interface ILayoutView {
     boolean PDFSave();
     void PDFUpdatePage(int pageno);
     //void PDFAddAnnotRect(float x, float y, float width, float height, int p);
+    ///I:: COMPROBAR SI DA PROBLEMAS (LO NUEVO DEBAJO)
 
+    void PDFUpdateCurrPage();
+    int PDFGetCurrPage();
+    void PDFAddAnnotRect(float x, float y, float width, float height, int p);
 
     int GetScreenX(float pdfX, int pageno);
     int GetScreenY(float pdfY, int pageno);
